@@ -8,6 +8,7 @@ namespace Kitchen.Menu
 {
     public class Menu
     {
+        public bool isAdded = false;
         public string[,] res =
         {
             {"Kabob", "18000"},
@@ -23,6 +24,8 @@ namespace Kitchen.Menu
             {"Pepsi", "1l = 9000 1.5l = 12000"},
             {"Cola", "1l = 11000 1.5l = 12000"},
         };
+
+        public string[,] kitchenList = new string[12, 2];
         public string[,] listKitchen =
         {
             {"Shashlik", "18000"},
@@ -49,18 +52,18 @@ namespace Kitchen.Menu
         public void IsDeleteInfo(string food_name)
         {
             bool IsFound = false;
-            for (int i = 0; i <listKitchen.Length / 2; i++)
+            for (int i = 0; i < listKitchen.Length / 2; i++)
             {
                 for (int j = 0; j < 2; j++)
                 {
-                   if (listKitchen[i, j] == food_name)
-                   {
+                    if (listKitchen[i, j] == food_name)
+                    {
                         IsFound = true;
                         listKitchen[i, j] = null;
                         listKitchen[i, (j + 1)] = null;
-                       
-                        
-                   }
+
+
+                    }
 
                 }
 
@@ -98,7 +101,7 @@ namespace Kitchen.Menu
                         IsFound = true;
                         fastFoods[i, j] = null;
                         fastFoods[i, (j + 1)] = null;
-                        
+
                     }
 
                 }
@@ -134,43 +137,103 @@ namespace Kitchen.Menu
         }
         public void GetAllInfo()
         {
-            for (int i = 0; i < res.Length / 2; i++)
-            {
-                int count = 0;
-                for (int j = 0; j < 2; j++)
-                {
-                    if (res[i, j] != null)
-                    {
-                        Console.Write(res[i, j] + " ");
-                    }
-                    else
-                    {
-                        count++;
-                    }
-
-                }
-                if (count != 2)
-                {
-                    Console.WriteLine();
-                }
-
-            }
-        }
-        public void ClearAllInfo()
-        {
-            if (res != null)
+            if (isAdded == false)
             {
                 for (int i = 0; i < res.Length / 2; i++)
                 {
+                    int count = 0;
                     for (int j = 0; j < 2; j++)
                     {
-                        res[i, j] = null;
+                        if (res[i, j] != null)
+                        {
+                            Console.Write(res[i, j] + " ");
+                        }
+                        else
+                        {
+                            count++;
+                        }
+
                     }
+                    if (count != 2)
+                    {
+                        Console.WriteLine();
+                    }
+
                 }
             }
             else
             {
-                Console.WriteLine("Baza Mavjud emas");
+                for (int i = 0; i < kitchenList.Length / 2; i++)
+                {
+                    int count = 0;
+                    for (int j = 0; j < 2; j++)
+                    {
+                        if (res[i, j] != null)
+                        {
+                            Console.Write(kitchenList[i, j] + " ");
+                        }
+                        else
+                        {
+                            count++;
+                        }
+
+                    }
+                    if (count != 2)
+                    {
+                        Console.WriteLine();
+                    }
+                }
+
+            }
+
+             void ClearAllInfo()
+            {
+                if (res != null)
+                {
+                    for (int i = 0; i < res.Length / 2; i++)
+                    {
+                        for (int j = 0; j < 2; j++)
+                        {
+                            res[i, j] = null;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Baza Mavjud emas");
+                }
+            }
+              void AddOneFood
+                (
+                string food_name,
+                string food_price
+                )
+            {
+                bool isfound = false;
+                for (int i = 0; i < res.Length / 2; i++)
+                {
+                    for (int j = 0; j < 2; j++)
+                    {
+                        if (res[i, j].ToString().ToLower() == food_name.ToString().ToLower()) ;
+                        {
+                            isfound = true;
+                            Console.WriteLine("Bu taom menyuda bor");
+                        }
+
+                    }
+                }
+                if (isfound == false)
+                {
+                    for (int i = 0; i < listKitchen.Length / 2; i++)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            kitchenList[i, j] = res[i, j];
+                        }
+                    }
+                    kitchenList[2, 0] = food_name;
+                    kitchenList[2, 1] = food_price;
+                }
             }
         }
     }
