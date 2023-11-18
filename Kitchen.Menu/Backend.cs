@@ -24,7 +24,7 @@ namespace Kitchen.Menu
            
 
 
-        }
+            }
             public void SearchFood(string foodName)
             {
                 Menu menu = new Menu();
@@ -46,8 +46,8 @@ namespace Kitchen.Menu
                 }
                 if (IsThisFood == true)
                 {
-                    Console.WriteLine("Foods: " + menu.listKitchen[i_value, j_value]);
-                    Console.WriteLine("Price: " + menu.listKitchen[i_value, j_value + 1]);
+                    Console.Write("Foods: " + menu.listKitchen[i_value, j_value]);
+                    Console.Write("Price: " + menu.listKitchen[i_value, j_value + 1]);
                   
                    
                 }
@@ -56,70 +56,8 @@ namespace Kitchen.Menu
                     Console.WriteLine("This is not food");
                 }
             }
-        public void SearchFastFood(string fFoodName)
-        {
-            Menu menu = new Menu();
-            bool IsThisfFood = false;
-            int i_value = 0, j_value = 0;
-            for (int i = 0; i < menu.fastFoods.Length / 2; i++)
-            {
-                for (int j = 0; j < 2; j++)
-                {
-                    if (menu.fastFoods[i, j].ToLower() == fFoodName.ToLower())
-                    {
-                        i_value = i;
-                        j_value = j;
-                        IsThisfFood = true;
-                    }
-                }
-                Console.WriteLine();
-
-            }
-            if (IsThisfFood == true)
-            {
-                Console.WriteLine("Foods: " + menu.fastFoods[i_value, j_value]);
-                Console.WriteLine("Price: " + menu.fastFoods[i_value, j_value + 1]);
-
-
-            }
-            else
-            {
-                Console.WriteLine("This is not fFood");
-            }
-        }
-        public void SearchDrinks(string drinkName)
-        {
-            Menu menu1 = new Menu();
-            bool IsThisDrinks = false; ;
-            int i_value = 0, j_value = 0;
-            for (int i = 0; i < menu1.listDrinks.Length / 3; i += 2)
-            {
-                for (int j = 0; j < 3; j += 2)
-                {
-                    if (menu1.listDrinks[i, j].ToLower() == drinkName.ToLower())
-                    {
-                        i_value = i;
-                        j_value = j;
-                        IsThisDrinks = false;
-                    }
-                }
-                Console.WriteLine();
-
-            }
-            if (IsThisDrinks == false)
-            {
-                Console.WriteLine("Drink: " + menu1.listDrinks[i_value, j_value]);
-                Console.WriteLine("Price: " + menu1.listDrinks[i_value, j_value + 1]);
-                Console.WriteLine("Price: " + menu1.listDrinks[i_value, j_value + 2]);
-
-
-            }
-            else
-            {
-                Console.WriteLine("This is not drinks");
-            }
-        }
+       
     }
-    }
+}
 
 
